@@ -35,13 +35,8 @@ namespace RestApiFirstProject.Controllers
         [HttpPost]
         public IActionResult NewUczen(Uczen uczen)
         {
-            Console.WriteLine("controller: nowy uczeń");
             uczen.Id = uczniowie.Max(u => u.Id) + 1;
             uczniowie.Add(uczen);
-            foreach (var item in uczniowie)
-            {
-                Console.WriteLine(item.Imie);
-            }
             return CreatedAtAction(nameof(GetById), new { id = uczen.Id }, uczen);
         }
 
