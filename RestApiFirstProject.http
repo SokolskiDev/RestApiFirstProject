@@ -1,6 +1,44 @@
-@RestApiFirstProject_HostAddress = http://localhost:5219
+@RestApiFirstProject_HostAddress = https://localhost:7293
 
-GET {{RestApiFirstProject_HostAddress}}/weatherforecast/
+### 1. GET - pobierz wszystkich uczniow
+GET {{RestApiFirstProject_HostAddress}}/api/uczniowie
 Accept: application/json
+
+###
+
+### 2. GET - pobierz ucznia o ID 1
+GET {{RestApiFirstProject_HostAddress}}/api/uczniowie/1
+Accept: application/json
+
+###
+
+### 3. POST - dodaj ucznia
+POST {{RestApiFirstProject_HostAddress}}/api/uczniowie
+Content-Type: application/json
+
+{
+    "imie": "Piotr",
+    "nazwisko": "Wisniewski",
+    "wiek": 17,
+    "klasa": "2AP"
+}
+
+###
+
+### 4. PUT - edytuj ucznia o ID 1
+PUT {{RestApiFirstProject_HostAddress}}/api/uczniowie/1
+Content-Type: application/json
+
+{
+    "imie": "Jan",
+    "nazwisko": "Kowalski",
+    "wiek": 19,
+    "klasa": "5IP"
+}
+
+###
+
+### 5. DELETE - usun ucznia o ID 1
+DELETE {{RestApiFirstProject_HostAddress}}/api/uczniowie/1
 
 ###
