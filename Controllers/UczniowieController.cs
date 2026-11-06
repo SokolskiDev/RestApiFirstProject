@@ -8,12 +8,12 @@ namespace RestApiFirstProject.Controllers
     [ApiController]
     public class UczniowieController : ControllerBase
     {
-        private List<Uczen> uczniowie = new()
-        {
+        private static readonly List<Uczen> uczniowie =
+        [
             new Uczen { Id = 1, Imie = "Jan", Nazwisko = "Kowalski", Wiek = 15, Klasa = "1A" },
             new Uczen { Id = 2, Imie = "Anna", Nazwisko = "Nowak", Wiek = 16, Klasa = "2B" },
             new Uczen { Id = 3, Imie = "Piotr", Nazwisko = "Wiśniewski", Wiek = 17, Klasa = "3C" }
-        };
+        ];
 
         [HttpGet]
         public IActionResult Get()
@@ -35,8 +35,13 @@ namespace RestApiFirstProject.Controllers
         [HttpPost]
         public IActionResult NewUczen(Uczen uczen)
         {
+            Console.WriteLine("controller: nowy uczeń");
             uczen.Id = uczniowie.Max(u => u.Id) + 1;
             uczniowie.Add(uczen);
+            foreach (var item in uczniowie)
+            {
+                Console.WriteLine(item.Imie);
+            }
             return CreatedAtAction(nameof(GetById), new { id = uczen.Id }, uczen);
         }
 

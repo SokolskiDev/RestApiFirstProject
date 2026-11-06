@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
     "imie": "Piotr",
-    "nazwisko": "Wisniewski",
+    "nazwisko": "Piotrowski",
     "wiek": 17,
     "klasa": "2AP"
 }
